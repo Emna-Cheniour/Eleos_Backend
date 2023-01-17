@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Post, Get, Body } from '@nestjs/common';
-import { Delete, Param, Put, Query } from '@nestjs/common/decorators';
+import { Delete, Param, Put, Query, UseInterceptors } from '@nestjs/common/decorators';
 import { NotFoundException } from '@nestjs/common/exceptions';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { FormDataRequest } from 'nestjs-form-data';
 import { AddArticleDTO } from './add-article-dto';
 import { ArticleService } from './article.service';
 import { FilterArticleDTO } from './filter-article-dto';
-
 
 @Controller('eleos/articles')
 export class ArticleController {
@@ -23,9 +24,14 @@ export class ArticleController {
         }
     }
 
+    
     @Post('/')
+    @FormDataRequest()
+    // @UseInterceptors(FileInterceptor('fileSource'))
     async addArticle(@Body() addArticleDTO: AddArticleDTO) {
         const article = await this.articleService.addArticle(addArticleDTO);
+        console.log(addArticleDTO);
+        
         return article;
     }
 

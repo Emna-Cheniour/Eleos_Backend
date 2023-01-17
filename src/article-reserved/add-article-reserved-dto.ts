@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-export class AddArticleDTO {
+export class AddArticleReservedDTO {
   name: string;
   description: string;
   categorie: string;
