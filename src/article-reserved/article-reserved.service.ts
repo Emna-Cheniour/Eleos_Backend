@@ -11,7 +11,7 @@ export class ArticleReservedService {
 
     constructor(@InjectModel('ArticleReserved') private readonly articleReservedModel: Model<ArticleReservedDocument>) { }
 
-    async getAlReservedArticles() {
+    async getAllReservedArticles() {
         const articles = await this.articleReservedModel.find().exec();
         return articles;
     }

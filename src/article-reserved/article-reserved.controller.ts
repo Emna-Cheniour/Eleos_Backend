@@ -11,13 +11,13 @@ import { FormDataRequest } from 'nestjs-form-data';
 import { AddArticleReservedDTO } from './add-article-reserved-dto';
 import { ArticleReservedService } from './article-reserved.service';
 
-@Controller('article-reserved')
+@Controller('eleos/article-reserved')
 export class ArticleReservedController {
   constructor(private articleReservedService: ArticleReservedService) {}
   @Get('/')
   async getArticles() {
     const allArticles =
-      await this.articleReservedService.getAlReservedArticles();
+      await this.articleReservedService.getAllReservedArticles();
     return allArticles;
   }
 

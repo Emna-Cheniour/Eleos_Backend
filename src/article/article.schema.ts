@@ -1,11 +1,18 @@
 /* eslint-disable prettier/prettier */
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 export type ArticleDocument = Article & Document;
 
 @Schema()
 export class Article {
+  
+  @Prop({
+    type: String,
+    default: () => new mongoose.Types.ObjectId().toHexString()
+  })
+  _id: string;
+
   @Prop()
   name: string;
 
