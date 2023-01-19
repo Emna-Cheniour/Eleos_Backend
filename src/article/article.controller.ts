@@ -31,7 +31,6 @@ export class ArticleController {
     async addArticle(@Body() addArticleDTO: AddArticleDTO) {
         const article = await this.articleService.addArticle(addArticleDTO);
         console.log(addArticleDTO);
-        
         return article;
     }
 
